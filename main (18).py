@@ -9,12 +9,12 @@ from keep_alive import keep_alive
 from discord.ext import commands 
 import mysql.connector 
 from mysql.connector import pooling
-DB_HOST = "rmt.cookiegmvn.xyz" 
-DB_USER = "texx" 
-DB_PASSWD = "ezsBYB2osbmF3EFp"
+DB_HOST = "" 
+DB_USER = "" 
+DB_PASSWD = ""
 
-DB_NAME = "texx"
-poolname = "mysqlpool"
+DB_NAME = ""
+poolname = ""
 poolsize = 3
 
 def get_prefix(bot, message):
@@ -91,24 +91,6 @@ async def uptime(ctx):
 
  
         
-@client.command()
-@commands.is_owner()
-async def create_table(ctx):
-    db = Mysql.connect(host=DB_HOST, user=DB_USER, passwd=DB_PASSWD, database=DB_NAME)
-    cursor = db.cursor()
-
-    cursor.execute("""CREATE TABLE Guild(
-      guildID BIGINT,
-      prefix text
-      
-    )
-    """)
-    db.commit()
-
-    cursor.close()
-    db.close()
-
-    await ctx.send("Table created successfully !")
 @client.command(pass_context=True)
 @commands.guild_only()
 async def ping(ctx):
